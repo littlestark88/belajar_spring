@@ -1,0 +1,17 @@
+package com.example.demo.model.response;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class BaseResponse<T> {
+
+    private Integer code;
+    private String status;
+    private String message;
+    private String token;
+    private Boolean isSuccess;
+    private String id;
+    private T data;
+}
