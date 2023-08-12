@@ -15,4 +15,5 @@ public class ProductDTO implements Serializable {
     private String id;
     private String titleName;
     private String descriptionProduct;
+    private String userId;
 }

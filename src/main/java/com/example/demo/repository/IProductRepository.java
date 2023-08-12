@@ -15,11 +15,14 @@ import java.util.Optional;
 public interface IProductRepository extends JpaRepository<ProductEntity, String> {
 //    List<ProductEntity> findFirstByUserEntityAndUserId(UserEntity userEntity, String userId);
 
-    @Transactional
-    @Modifying
-    @Query("SELECT new com.example.demo.model.response.ProductDTO(u.id, p.titleName, p.descriptionProduct) " +
+    @Query("SELECT new com.example.demo.model.response.ProductDTO(p.id, p.titleName, p.descriptionProduct, p.user.id) " +
             "FROM ProductEntity p " +
-            "JOIN p.user u " +
-            "where p.user = :userId")
-    Optional<List<ProductDTO>> findProductByUserId(@Param("userId")String userId);
+//            "JOIN p.user u " +
+            "WHERE p.user.id = :userId")
+    List<ProductDTO> findProductByUserIdList(@Param("userId")String userId);
+
+    @Query("SELECT new com.example.demo.model.response.ProductDTO(p.id, p.titleName, p.descriptionProduct, p.user.id) " +
+            "FROM ProductEntity p ")
+    List<ProductDTO> findAllProduct();
+
 }

@@ -44,7 +44,7 @@ public class ProductService implements IProductService{
     @Override
     public BaseResponse<Object> getAllProduct() {
 
-        var product = userRepository.findAll();
+        var product = productRepository.findAllProduct();
 
         return BaseResponse.builder()
                 .data(product)
@@ -55,7 +55,7 @@ public class ProductService implements IProductService{
     public BaseResponse<Object> getProductByUserId(String userId) {
 //        var user = userRepository.findById(userId).orElseThrow();
 //        productRepository.findAll();
-        var product = productRepository.findProductByUserId(userId);
+        var product = productRepository.findProductByUserIdList(userId);
 //        var product = productRepository.findFirstByUserEntityAndUserId(user, userId);
 
         return BaseResponse.builder()
